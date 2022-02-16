@@ -16,10 +16,10 @@ const limiter = rateLimit({
 });
 
 router.post("/message-sent", limiter, (req, res) => {
-  const { name, message } = req.body;
+  const { name, message, email } = req.body;
   client.messages
     .create({
-      body: `name: ${name}\nmessage: ${message}`,
+      body: `name: ${name}\nmessage: ${message}\nemail: ${email}`,
       from: twilioNumber,
       to: myNumber,
     })
